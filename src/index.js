@@ -2,7 +2,10 @@ import {initializeApp} from 'firebase/app';
 import {
     getFirestore,
     collection,
-    getDocs
+    getDocs,
+    addDoc,
+    deleteDoc,
+    doc
 
 } from 'firebase/firestore';
 const firebaseConfig = {
@@ -27,4 +30,33 @@ getDocs(colRef)
 
     })
     console.log(books)
+})
+
+ const addForm = document.querySelector(".add");
+
+    addForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+        const titleValue = addForm.title.value;
+        const authorValue = addForm.author.value;
+
+        console.log(titleValue);
+        console.log(authorValue);
+    addDoc(colRef, {
+        title : titleValue,
+        author : authorValue,
+    })
+        .then(()=> {
+            addForm.reset()
+        })
+})
+
+const deleteForm = document.querySelector(".delete");
+deleteForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const  docRef = doc(db, "Book", deleteForm.id.value)
+    deleteDoc(docRef)
+        .then(()=> {
+            deleteForm.reset()
+        })
 })
