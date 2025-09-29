@@ -1,7 +1,7 @@
 import {initializeApp} from 'firebase/app';
 import {
     getFirestore,
-    collection,
+    collection, onSnapshot,
     getDocs,
     addDoc,
     deleteDoc,
@@ -22,8 +22,7 @@ const db = getFirestore();
 
 const colRef = collection(db, "Book")
 
-getDocs(colRef)
-.then((snapshot) => {
+onSnapshot(colRef , (snapshot) => {
     let books = [];
     snapshot.docs.forEach((doc) => {
         books.push({... doc.data(), id: doc.id });
