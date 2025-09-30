@@ -5,7 +5,8 @@ import {
     getDocs,
     addDoc,
     deleteDoc,
-    doc, query, where
+    doc, query, where,
+    orderBy, serverTimestamp
 
 } from 'firebase/firestore';
 const firebaseConfig = {
@@ -24,7 +25,7 @@ const colRef = collection(db, "Book")
 
 
 // queries
-const q = query(colRef, where("author","==", "azimov"));
+const q = query(colRef, orderBy("createdAt"));
 onSnapshot(q , (snapshot) => {
     let books = [];
     snapshot.docs.forEach((doc) => {
@@ -46,6 +47,7 @@ onSnapshot(q , (snapshot) => {
     addDoc(colRef, {
         title : titleValue,
         author : authorValue,
+        createdAt : serverTimestamp()
     })
         .then(()=> {
             addForm.reset()
