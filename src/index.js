@@ -7,7 +7,7 @@ import {
     deleteDoc,
     doc, query, where,
     orderBy, serverTimestamp,
-    getDoc
+    getDoc, updateDoc,
 
 } from 'firebase/firestore';
 const firebaseConfig = {
@@ -43,7 +43,10 @@ onSnapshot(q , (snapshot) => {
 onSnapshot(docRef,(doc) =>{
     console.log(doc.data(), doc.id)
 } )
- const addForm = document.querySelector(".add");
+
+
+ // adding documents
+const addForm = document.querySelector(".add");
 
     addForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -62,6 +65,8 @@ onSnapshot(docRef,(doc) =>{
         })
 })
 
+
+// deleting documents
 const deleteForm = document.querySelector(".delete");
 deleteForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -70,5 +75,19 @@ deleteForm.addEventListener("submit", (e) => {
     deleteDoc(docRef)
         .then(()=> {
             deleteForm.reset()
+        })
+})
+
+// updating document
+const updateForm = document.querySelector(".update");
+updateForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const  docRef = doc(db, "Book", updateForm.id.value)
+
+    updateDoc(docRef, {
+        title : 'updated title',
+    })
+        .then((doc) => {
+            updateForm.reset()
         })
 })

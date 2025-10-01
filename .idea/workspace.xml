@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9534f620-a4e0-4149-8e4c-64f99116ae73" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/main.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/main.bundle.js" afterDir="false" />
@@ -91,7 +90,7 @@
       <workItem from="1759146929940" duration="3706000" />
       <workItem from="1759158176880" duration="55000" />
       <workItem from="1759248317886" duration="1447000" />
-      <workItem from="1759300242234" duration="758000" />
+      <workItem from="1759300242234" duration="1401000" />
     </task>
     <servers />
   </component>
