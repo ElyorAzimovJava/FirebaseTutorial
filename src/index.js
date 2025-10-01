@@ -6,7 +6,8 @@ import {
     addDoc,
     deleteDoc,
     doc, query, where,
-    orderBy, serverTimestamp
+    orderBy, serverTimestamp,
+    getDoc
 
 } from 'firebase/firestore';
 const firebaseConfig = {
@@ -35,6 +36,13 @@ onSnapshot(q , (snapshot) => {
     console.log(books)
 })
 
+
+// get a single document
+  const docRef = doc(db, "Book", 'QAe1kNwKNBX6RPe9Lq22')
+
+onSnapshot(docRef,(doc) =>{
+    console.log(doc.data(), doc.id)
+} )
  const addForm = document.querySelector(".add");
 
     addForm.addEventListener("submit", (e) => {
